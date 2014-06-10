@@ -5,8 +5,7 @@ class BankAccount
   end
 
   def balance
-    @balance = 0 if @balance.nil?
-    @balance
+    @balance ||= 0
   end
   
   def deposit(amount)
