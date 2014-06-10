@@ -5,13 +5,17 @@ class BankAccount
   end
 
   def balance
-    @balance ||= 0
+    @balance = 0 if @balance.nil?
+    @balance
   end
-
+  
+  def deposit(amount)
+    @balance += amount
+  end
 
 end
 
-
 account = BankAccount.new
 
-puts account
+account.deposit 20
+puts account.to_s
