@@ -1,20 +1,60 @@
+module Interest
+  def calculateInterest(some_numbers)
+    puts "#{sprintf("$%.2f", (some_numbers * 1.75))}"
+  end
+end
+
 class BankAccount
+  include Interest
+
+  attr_reader :balance
+  attr_accessor :deposit_log, :name
 
   def to_s
     sprintf("$%.2f", self.balance)
   end
 
-  def balance
-    @balance ||= 0
+  def initialize
+    @balance = 0
+    @deposit_log = ""
+    @deposits = [] 
   end
-  
+ 
   def deposit(amount)
     @balance += amount
+    @deposit_log = "Deposit of #{sprintf("$%.2f", amount)}"
+    @deposits.push "#{self.deposit_log}"
+  end
+
+  def history
+    puts "History for account \"#{self.name}\""
+    @deposits.each do |log|
+      log
+    end
+
+  end
+
+  def withdraw(withdraw_amount)
+    @balance -= (withdraw_amount) 
+    @deposit_log = "Withdrawal of #{sprintf("$%.2f", withdraw_amount)}"
+    @deposits.push("#{self.deposit_log}")
+  end
+
+  def summary
+    "The account \"" + self.name + "\" has a balance of " + 
+          self.balance.to_s
   end
 
 end
 
 account = BankAccount.new
+account.name = "TestAccount"
 
 account.deposit 20
-puts account.to_s
+account.deposit 20
+account.withdraw 30
+account.deposit 100
+
+puts account.history
+puts account.summary
+account.calculateInterest(account.balance) 
