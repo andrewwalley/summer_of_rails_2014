@@ -1,6 +1,6 @@
 module Interest
-  def calculateInterest(some_numbers)
-    puts "#{sprintf("$%.2f", (some_numbers * 1.75))}"
+  def calculateInterest(amount)
+    puts "#{sprintf("$%.2f", ((amount * 0.15) * 1))}"
   end
 end
 
