@@ -22,19 +22,13 @@ module Logger
   end
 end
 
-
+#this is some text on my new branch
 
 class BankAccount
   include Logger
 
   attr_reader :balance
-  attr_accessor :deposit_log, :name
-
-  def self.new_with_name(starting_name)
-    account = BankAccount.new
-    account.name = starting_name
-    account
-  end
+  attr_accessor :deposit_log, :name 
 
   def to_s
     sprintf("$%.2f", self.balance)
@@ -77,15 +71,16 @@ class BankAccount
 
 end
 
-account = BankAccount.new_with_name("Homer's Savings")
+account = BankAccount.new(0, "Homer's Savings")
+puts account.balance
+puts account.name
 
 
+#account.deposit 20
+#account.deposit 20
+#account.withdraw 30
+#account.deposit 100
 
-account.deposit 20
-account.deposit 20
-account.withdraw 30
-account.deposit 100
-
-puts account.history
-puts account.summary
-puts account.calculate_interest(account.balance) 
+#puts account.history
+#puts account.summary
+#puts account.calculate_interest(account.balance) 
