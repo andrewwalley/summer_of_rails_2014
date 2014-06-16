@@ -1,5 +1,9 @@
 module Interest
+  #FIXME: should be calculate_interest
   def calculateInterest(amount)
+    
+    #FIXME: puts should only be used outside of objects
+    #FIXME: no need for string interpolation with sprintf - should just be sprintf("blah", number)
     puts "#{sprintf("$%.2f", ((amount * 0.15) * 1))}"
   end
 end
@@ -27,8 +31,10 @@ class BankAccount
   end
 
   def history
+    # FIXME: remove puts. Make this method return a string
     puts "History for account \"#{self.name}\""
     @deposits.each do |log|
+      # FIXME: what's happening here?
       log
     end
 
