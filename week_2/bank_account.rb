@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class WithdrawalMoreThanBalanceError < StandardError
   def to_s
     "The withdrawal amount cannot exceed the balance"
@@ -8,15 +7,6 @@ end
 class WrongDataTypeForWithdrawError < StandardError
   def to_s
     "The withdraw amount must be a number"
-=======
-module Interest
-  #FIXME: should be calculate_interest
-  def calculateInterest(amount)
-    
-    #FIXME: puts should only be used outside of objects
-    #FIXME: no need for string interpolation with sprintf - should just be sprintf("blah", number)
-    puts "#{sprintf("$%.2f", ((amount * 0.15) * 1))}"
->>>>>>> 7fab35561df3fc16a34993fa3045cf74a700210c
   end
 end
 
@@ -65,18 +55,10 @@ class BankAccount
   end
 
   def history
-<<<<<<< HEAD
     log_output = "" 
     puts "History for account \"#{self.name}\""
     @deposits.each do |log| 
       log_output += "#{log}\n"
-=======
-    # FIXME: remove puts. Make this method return a string
-    puts "History for account \"#{self.name}\""
-    @deposits.each do |log|
-      # FIXME: what's happening here?
-      log
->>>>>>> 7fab35561df3fc16a34993fa3045cf74a700210c
     end
   end
 
