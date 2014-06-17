@@ -16,15 +16,26 @@ class WrongDataTypeForDepositError < StandardError
   end
 end
 
-module Logger
+module Interest
   def calculate_interest(amount)
     sprintf("$%.2f", ((amount * 0.15) * 1))
+  end
+end
+
+module Logger
+  private
+  def log(message)
+    output = "#{Time.now} : #{message}"
+    File.open("log.txt", "w") do |logfile|
+        logfile << output
+    end
   end
 end
 
 #this is some text on my new branch
 
 class BankAccount
+  include Interest
   include Logger
 
   attr_reader :balance
@@ -74,6 +85,7 @@ end
 account = BankAccount.new(0, "Homer's Savings")
 puts account.balance
 puts account.name
+#account.log("Message number 2")
 
 
 #account.deposit 20
