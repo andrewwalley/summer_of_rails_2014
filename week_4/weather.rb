@@ -1,6 +1,7 @@
+require 'sinatra'
 require 'open-uri'
 require 'json'
-require 'sinatra'
+
 
 class Weather 
   attr_reader :city, :temperature, :error_message
@@ -21,20 +22,18 @@ class Weather
       @error_message = "I don't seem to be able to grab the weather for you."
     end
 
-    @error_message == nil
+      @error_message == nil 
   end
 end
 
 get "/weather/:zipcode" do 
   zipcode = params[:zipcode]
-  "The zipcode is #{zipcode}"
+  weather = Weather.new(zipcode)
+  if weather.fetch
+    "The temperature in #{weather.city} is #{weather.temperature}."
+  else
+    "#{weather.error_message}"
+  end 
 end
 
   
-  weather = Weather.new(zipcode)
-  if weather.fetch
-    puts weather.temperature
-    puts weather.city
-  else
-    puts weather.error_message
-  end
