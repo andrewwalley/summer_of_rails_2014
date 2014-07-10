@@ -1,0 +1,12 @@
+<h1>Links</h1>
+<% if @links.length > 0 %>
+  <ol>
+  <% @links.each_with_index do |link, index| %>
+    <li>
+      <a href="<%= link[:href] %>"><%= link[:text]%></a>
+    </li>
+  <% end %>
+  </ol>
+<% else %>
+  <p>There are no links to display.</p>
+<% end %>
