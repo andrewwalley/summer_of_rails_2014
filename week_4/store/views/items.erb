@@ -1,0 +1,23 @@
+<h1>Items</h1>
+<fieldset>
+  <legend>Add item</legend>
+  <form action="/items" method="POST">
+    <label>Name: <input type="text" name="name"></label>
+    <label>Price: <input type="number" name="price"></label>
+    <input type="submit" name="Add">
+  </form>
+</fieldset>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  <% if @results.length > 0 %>
+  <% @results.collect do |row| %>
+    <tr><td><%= row[0] %></td><td><%= row[1] %></td></tr>
+    <% end %>
+  <% else %>
+    <p>Sorry, there is no data to display.</p>
+  <% end %>
+</table>
+
